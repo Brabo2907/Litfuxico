@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fofoca Simples</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Últimas Fofocas</h1>
+  <div id="fofocas"></div>
+
+  <script>
+    fetch('fofocas.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('fofocas');
+        data.forEach(n => {
+          container.innerHTML += `
+            <div class="noticia">
+              <h2>${n.titulo}</h2>
+              <p>${n.texto}</p>
+            </div>`;
+        });
+      });
+  </script>
+</body>
+</html>
